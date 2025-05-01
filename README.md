@@ -18,7 +18,7 @@
 
 1.  **安装 Tampermonkey:** 首先，你需要在你的浏览器中安装 [Tampermonkey](https://www.tampermonkey.net/) 扩展。
 2.  **安装脚本:**
-    *   点击 [这里](https://github.com/cmyyx/bili-comment-filter/raw/main/bili-comment-filter.user.js) 
+    *   点击 [这里](https://github.com/cmyyx/bili-comment-filter/raw/main/bili-comment-filter.user.js) ([GitHub仓库(https://github.com/cmyyx/bili-comment-filter)])
     *   或者，将 `bili-comment-filter.user.js` 文件中的代码复制到 Tampermonkey 的新脚本编辑器中并保存。
 
 ## 使用方法

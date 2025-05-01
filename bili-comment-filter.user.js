@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         B站评论过滤器
-// @namespace    http://tampermonkey.net/
+// @namespace    https://github.com/cmyyx/bili-comment-filter
 // @version      0.1.1
 // @description  根据关键词和正则表达式过滤B站评论区的评论
 // @author       Trae AI, 璨梦踏月
