@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         B站评论过滤器
 // @namespace    http://tampermonkey.net/
-// @version      0.1
+// @version      0.1.1
 // @description  根据关键词和正则表达式过滤B站评论区的评论
 // @author       Trae AI, 璨梦踏月
 // @match        *://*.bilibili.com/video/*
@@ -609,11 +609,17 @@
                         }
                     }
                 } else {
-                    // 应用模糊效果
+                    // 应用模糊效果 或 恢复正常显示 (如果之前是隐藏)
                     thread.style.display = thread.dataset.originalDisplay;
-                    thread.style.opacity = '0.6';
-                    thread.style.filter = 'blur(3px)';
+                    thread.style.opacity = thread.dataset.originalOpacity || '1'; // 恢复原始透明度
+                    thread.style.filter = 'blur(3px)'; // 应用模糊
                     thread.style.cursor = 'pointer'; // 鼠标悬停时显示手型光标
+
+                    // 移除可能存在的占位符 (从隐藏切换到模糊时)
+                    const existingPlaceholder = thread.parentNode && thread.parentNode.querySelector(`.bili-filter-placeholder[data-filter-id="${thread.dataset.filterId}"]`);
+                    if (existingPlaceholder) {
+                        existingPlaceholder.remove();
+                    }
 
                     // 添加提示文本（仅对模糊显示的评论）
                     // 检查容器内是否已有提示
@@ -684,9 +690,10 @@
                     thread.style.display = thread.dataset.originalDisplay;
                     thread.style.opacity = thread.dataset.originalOpacity || '1';
                     thread.style.filter = thread.dataset.originalFilter || 'none';
+                    thread.style.cursor = ''; // 恢复默认光标
                 }
-                
-                // 移除提示文本和占位符
+
+                // 移除提示文本和占位符 (确保移除)
                 if (thread.dataset.filterId) {
                     // 移除模糊提示 (从container移除)
                     const hint = container.querySelector(`.bili-filter-hint[data-filter-id="${thread.dataset.filterId}"]`);
