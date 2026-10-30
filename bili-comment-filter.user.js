@@ -3,6 +3,7 @@
 // @namespace    https://github.com/cmyyx/bili-comment-filter
 // @version      0.1.1
 // @description  根据关键词和正则表达式过滤B站评论区的评论
+// @icon         https://www.bilibili.com/favicon.ico
 // @author       Trae AI, 璨梦踏月
 // @match        *://*.bilibili.com/video/*
 // @match        *://www.bilibili.com/read/*
